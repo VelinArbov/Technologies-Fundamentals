@@ -1,0 +1,105 @@
+Skip to content
+ 
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ @VelinArbov Sign out
+1
+0 0 ElviraPetkova/technology-fundamentals-2019
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
+technology-fundamentals-2019/Programming-Fundam-Retake-Exam-10.01.2019/02. Santa's Gifts/Program.cs
+@ElviraPetkova ElviraPetkova Add solutions programming fundamentals exam first part
+65526fe  7 days ago
+101 lines (80 sloc)  3.42 KB
+    
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02._Santa_s_Gifts
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int numberOfCommands = int.Parse(Console.ReadLine());
+
+            List<int> houses = Console.ReadLine()
+                .Split()
+                .Select(int.Parse)
+                .ToList();
+
+            int position = 0;
+
+            for (int i = 0; i < numberOfCommands; i++)
+            {
+                string[] tokens = Console.ReadLine().Split();
+
+                string command = tokens[0];
+
+                if(command == "Forward")
+                {
+                    int numberOfSteps = int.Parse(tokens[1]);
+
+                    if (numberOfSteps < 0 || numberOfSteps + position >= houses.Count)
+                    {
+                        continue;
+                    }
+
+                    position += numberOfSteps;
+
+                    houses.RemoveAt(position);
+                }
+                else if(command == "Back")
+                {
+                    int numberOfSteps = int.Parse(tokens[1]);
+
+                    if (position - numberOfSteps < 0)
+                    {
+                        continue;
+                    }
+
+                    position -= numberOfSteps;
+
+                    houses.RemoveAt(position);
+                }
+                else if(command == "Gift")
+                {
+                    int index = int.Parse(tokens[1]);
+                    int houseNumber = int.Parse(tokens[2]);
+
+                    if (index < 0 || index >= houses.Count)
+                    {
+                        continue;
+                    }
+
+                    houses.Insert(index, houseNumber);
+
+                    position = index;
+
+                }
+                else if(command == "Swap")
+                {
+                    int valueFirst = int.Parse(tokens[1]);
+                    int valueSecond = int.Parse(tokens[2]);
+
+                    if(houses.Contains(valueFirst) && houses.Contains(valueSecond))
+                    {
+                        int indexFirst = houses.IndexOf(valueFirst);
+                        int indexSecond = houses.IndexOf(valueSecond);
+
+                        houses[indexFirst] = valueSecond;
+                        houses[indexSecond] = valueFirst;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Position: {position}");
+            Console.WriteLine(string.Join(", ", houses));
+        }
+    }
+}
+
