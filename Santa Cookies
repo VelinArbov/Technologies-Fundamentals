@@ -1,0 +1,49 @@
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Santa_cookies
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int batches = int.Parse(Console.ReadLine());
+            int count = 0;
+            int box = 0;
+            while (count != batches)
+            {
+
+                int flourGrams = int.Parse(Console.ReadLine());
+                int sugarGrams = int.Parse(Console.ReadLine());
+                int cacaoGrams = int.Parse(Console.ReadLine());
+                int Cup = flourGrams / 140;
+                int BigSpoon = sugarGrams / 20;
+                int SmallSpoon = cacaoGrams / 10;
+                count++;
+                if ( Cup ==0 || BigSpoon == 0 || SmallSpoon == 0)
+                {
+                    Console.WriteLine("Ingredients are not enough for a box of cookies.") ;
+                    continue ;
+                }
+                int minOfthis = Math.Min(Cup,Math.Min(BigSpoon,SmallSpoon));
+                int cook = (170 * minOfthis) / 25;
+                int cookies = cook / 5;
+                box += cookies;
+                Console.WriteLine($"Boxes of cookies: {cookies}");
+              
+            }
+
+
+
+            Console.WriteLine($"Total boxes: {box}");
+
+
+
+
+
+        }
+
+    }
+}
