@@ -1,20 +1,4 @@
-Skip to content
- 
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- @VelinArbov Sign out
-1
-0 0 ElviraPetkova/technology-fundamentals-2019
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-technology-fundamentals-2019/Programming-Fundam-Retake-Exam-10.01.2019/02. Santa's Gifts/Program.cs
-@ElviraPetkova ElviraPetkova Add solutions programming fundamentals exam first part
-65526fe  7 days ago
-101 lines (80 sloc)  3.42 KB
-    
 using System;
 using System.Collections.Generic;
 using System.Linq;
