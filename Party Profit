@@ -1,0 +1,55 @@
+using System;
+using System.Linq;
+
+namespace MidExam1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int partySize = int.Parse(Console.ReadLine());
+            int days = int.Parse(Console.ReadLine());
+            
+            double coints = 0;
+
+            for (int i = 1; i <= days; i++)
+            {
+                int currentdays = i;
+                if (currentdays % 10 == 0)
+                {
+                    partySize -= 2;
+                }
+                if (currentdays % 15 == 0)
+                {
+                    partySize += 5;
+                }
+
+
+                coints += 50 - (partySize*2);
+                if ( currentdays % 3 == 0)
+                {
+                    coints -= partySize * 3;
+                }
+                if (currentdays % 5 == 0)
+                {
+
+                    coints += 20*partySize;
+                }
+                if (currentdays % 5 == 0 && currentdays % 3 == 0)
+                {
+
+                    coints -= partySize*2;
+                }
+
+
+               
+
+
+            }
+            double MoneyEach = Math.Floor(coints / partySize);
+            Console.WriteLine($"{partySize} companions received {MoneyEach} coins each.");
+           
+        }
+    }
+}
